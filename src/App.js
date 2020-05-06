@@ -23,20 +23,28 @@ const App = () => {
       const users = values.data;
 
       users.forEach((element) => {
-        const node = document.createElement("ul");
+        const node = document.createElement("tr");
         let string = "";
 
-        for (const key in element) {
-          const values = element[key];
-          string += `<li>${values}</li>`;
-          node.innerHTML = string;
-        }
+        //MAKE IT MORE DYNAMIC
+        string += `<td>${element.first_name}</td>`;
+        string += `<td>${element.last_name}</td>`;
+        string += `<td>${element.email}</td>`;
+
+        node.innerHTML = string;
         list.appendChild(node);
       });
     }
   };
 
-  return <div id="parentElement">{displayUsers()}</div>;
+  return (
+    <div>
+      {displayUsers()}
+      <table className="table is-bordered is-hoverable">
+        <tbody id="parentElement"></tbody>
+      </table>
+    </div>
+  );
 };
 
 export default App;
